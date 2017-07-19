@@ -94,26 +94,26 @@ Data is provided as an archive containing the following file hierarchy:
 Files descriptions and formats
 ------------------------------
 
-ground_truth.png
-    Description:
+- ground_truth.png
+    - Description:
         Ideal image your method should produce. 
         Included in training/demo dataset only.
-    Format:
-        PNG image with 3 channels (RGB, no alpha) “Truecolor” (no indexed 
-        colors) @ 8 bits / channel, sRGB color space, no embedded ICC profile.
+    - Format:
+        PNG image with 3 channels (RGB, no alpha) “Truecolor” (some "Grayscale")
+        @ 8 bits / channel, sRGB color space, no embedded ICC profile.
         Embedded ICC profiles will be ignored, and values will be assumed to be
         encoded with sRGB even in the absence of specific file header.
-input.mp4
-    Description:
+- input.mp4
+    - Description:
         Video stream which should be processed by your method to produce an 
         image as close as possible to ground_truth.png.
-    Format:
+    - Format:
         No audio stream, 1 video stream: mpeg4 container, H264 encoding, yuv420p
         color format, variable frame-rates. Frame size may be different from one
         video to another, but we will target native video recording resolution
         from smartphones which usually is full HD (1080p).
-reference_frame_NN_dewarped.png
-    Description:
+- reference_frame_NN_dewarped.png
+    - Description:
         Image of the same shape as the ground truth image: participants should 
         use either the shape of this image or the shape provided in 
         task_data.json to find the exact shape of the image they must generate.
@@ -125,29 +125,29 @@ reference_frame_NN_dewarped.png
         of the video (0-indexed). It usually means it was the first exploitable
         frame we found when generating the task. For most of the videos this 
         will be “00”, but you should not assume so.
-    Format: 
+    - Format: 
         Same as ground_truth.png
-reference_frame_NN_extracted.png
-    Description: 
+- reference_frame_NN_extracted.png
+    - Description: 
         The exact same frame from the video input which was “unwarped” to 
         produce the “dewarped” version.
-    Format: 
+    - Format: 
         Same as ground_truth.png
-reference_frame_NN_extracted_viz.png
-    Description: 
+- reference_frame_NN_extracted_viz.png
+    - Description: 
         Same as reference_frame_NN_extracted.png, but with an extra 
         visualization of the outline of the object to track drawn over the 
         image.
-    Format: 
+    - Format: 
         Same as ground_truth.png
-task_data.json
-    Description:
+- task_data.json
+    - Description:
         An easy-to-parse file which contains a summary of important coordinates 
         and shapes of: the image to produce (target_image_shape), the input 
         video frame (input_video_shape), the object to track 
         (object_coord_in_ref_frame) along with the id of the frame used as a 
         reference (reference_frame_id).
-    Format: 
+    - Format: 
         JSON file similar to the example below.
 
 Example of task_data.json file
